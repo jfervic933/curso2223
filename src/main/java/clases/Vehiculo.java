@@ -4,28 +4,6 @@
  */
 package clases;
 
-/**
- *
- * 
-¿Qué es una clase?
-* Es un molde donde vamos a indicar los atributos y métodos
-* de los objetos que queremos modelar
-¿Qué es un objeto?
-* Es una variable de tipo referencia que contiene los datos concretos de una
-* instancia de una clase
-
-¿Cuáles son las partes de una clase?
-* Definición, atributos y métodos
-¿Qué elementos componen la definición de una clase? Explica brevemente cada uno
-¿Qué es un método constructor?
-¿Qué son los métodos de consulta o getters?
-¿Qué son los métodos modificadores o setters?
-¿En qué consiste la instanciación de un objeto? ¿Para qué sirve el operador ‘new’?
-¿Cuál es la función del método main()? ¿Cómo se declara el método main()?
-¿Cómo interaccionan los objetos de una aplicación?
-
- */
-
 // Definición de la clase Vehiculo
 public class Vehiculo {
     // Atributos
@@ -36,17 +14,6 @@ public class Vehiculo {
     private String color;
     private double tarifa; // Precio alquiler día
     private boolean disponible; // Alquilado o libre
-    
-
-    
-//    public Vehiculo(String matricula, String color, String bastidor){
-//        this.matricula = matricula;
-//        this.color = color;
-//        this.bastidor = bastidor;
-//        // El resto se quedan con valores por defecto: null para objetos,0 para numeros
-//        // false boooleanos
-//        
-//    }
 
     public Vehiculo(String matricula, String bastidor, String marca, String modelo, String color, double tarifa, boolean disponible) {
         this.matricula = matricula;
@@ -65,6 +32,16 @@ public class Vehiculo {
         this.bastidor = bastidor;
         this.modelo = modelo;
         this.tarifa = tarifa;
+    }
+    
+    public Vehiculo(Vehiculo origen){
+        this.bastidor = origen.bastidor;
+        this.color = origen.color;
+        this.disponible = origen.disponible;
+        this.marca = origen.marca;
+        this.matricula = origen.matricula;
+        this.modelo = origen.modelo;
+        this.tarifa =  origen.tarifa;
     }
 
     public double getTarifa() {
@@ -128,5 +105,15 @@ public class Vehiculo {
         return "Vehiculo{" + "matricula=" + matricula + ", bastidor=" + bastidor + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", tarifa=" + tarifa + ", disponible=" + disponible + '}';
     }
 
+    public Vehiculo copiar(){
+        Vehiculo aux = new Vehiculo(matricula, bastidor, marca, modelo, color, tarifa, disponible);
+        return aux;
+    }
+    
+    public static Vehiculo copiar(Vehiculo origen){
+        Vehiculo aux = new Vehiculo(origen.matricula, origen.bastidor, origen.marca,
+                origen.modelo, origen.color, origen.tarifa, origen.disponible);
+        return aux;
+    }
 
 }
